@@ -1,5 +1,5 @@
 {
-  "name": "element-block-utils",
+  "name": "@volusion/element-block-utils",
   "version": "1.0.0",
   "description": "",
   "main": "src/index.js",
