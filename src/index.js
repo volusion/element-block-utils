@@ -1,1 +1,1 @@
-export default 'element-block-utils';
+export { createFactory } from './createFactory';
