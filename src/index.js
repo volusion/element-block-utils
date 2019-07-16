@@ -1,5 +1,1 @@
-const createFactory = require('./createFactory');
-
-module.exports = {
-    createFactory
-};
+export { createFactory } from './createFactory';
