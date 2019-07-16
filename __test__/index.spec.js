@@ -1,8 +1,10 @@
-import app from 'src/index.js';
+import { createFactory } from 'src/index.js';
 
-describe('App', () => {
-  it('should run the tests', () => {
-    expect(true).toBe(true);
-    expect(app).toBe('element-block-utils');
-  });
+describe('createFactory()', () => {
+    it('should run without errors', () => {
+        const blockFactory = React => () => <div />;
+        const styles = jest.fn();
+        const configSchema = jest.fn();
+        createFactory(blockFactory, styles, configSchema);
+    });
 });
