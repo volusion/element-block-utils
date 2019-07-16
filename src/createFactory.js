@@ -1,4 +1,4 @@
-export function createFactory(blockFactory, styles, configSchema) {
+module.exports = function createFactory(blockFactory, styles, configSchema) {
     return function(
         { React, ElementPropTypes, Components },
         utils,
@@ -40,4 +40,4 @@ export function createFactory(blockFactory, styles, configSchema) {
             config: configSchema(ElementPropTypes)
         };
     };
-}
+};

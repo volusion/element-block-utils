@@ -1,1 +1,5 @@
-export { createFactory } from './createFactory';
+const createFactory = require('./createFactory');
+
+module.exports = {
+    createFactory
+};
