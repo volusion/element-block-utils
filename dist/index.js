@@ -1,7 +1,7 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
-  (global = global || self, factory(global.FOO = {}));
+  (global = global || self, factory(global.blockUtils = {}));
 }(this, function (exports) { 'use strict';
 
   function _classCallCheck(instance, Constructor) {

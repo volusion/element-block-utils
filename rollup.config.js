@@ -5,9 +5,20 @@ export default {
   input: 'src/index.js',
   output: {
       file: pkg.main,
-      name: 'FOO',
+      name: 'blockUtils',
       format: 'umd',
-    },
+  },
+  // output: [
+  //   {
+  //     file: pkg.main,
+  //     format: 'umd',
+  //   },
+  //   {
+  //     file: pkg.module,
+  //     format: 'es',
+  //   },
+  // ],
+
         plugins: [
             babel({
                 // babelrc: false,
