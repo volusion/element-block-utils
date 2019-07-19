@@ -1,4 +1,4 @@
-export function createFactory(blockFactory, styles, configSchema) {
+export function createFactory(blockFactory, { getStyles, configSchema }) {
     return function(
         { React, ElementPropTypes, Components },
         utils,
@@ -6,7 +6,7 @@ export function createFactory(blockFactory, styles, configSchema) {
         globalStyles,
         blockConfig
     ) {
-        const classes = StyleSheet.create(styles(globalStyles, blockConfig));
+        const classes = StyleSheet.create(getStyles(globalStyles, blockConfig));
 
         const generatedComponents = Object.keys(Components).reduce(
             (componentList, name) => {

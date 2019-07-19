@@ -6,9 +6,12 @@ import { createFactory } from 'src/index.js';
 describe('createFactory()', () => {
     it('should return a working React component', () => {
         const blockFactory = React => () => <div />;
-        const styles = () => ({});
+        const getStyles = () => ({});
         const configSchema = () => {};
-        const factory = createFactory(blockFactory, styles, configSchema);
+        const factory = createFactory(blockFactory, {
+            getStyles,
+            configSchema
+        });
 
         const TestBlock = factory(
             { React, Components: {} },
