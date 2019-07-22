@@ -7,10 +7,10 @@ describe('createFactory()', () => {
     it('should return a working React component', () => {
         const blockFactory = React => () => <div />;
         const getStyles = () => ({});
-        const configSchema = () => {};
+        const getConfigSchema = () => {};
         const factory = createFactory(blockFactory, {
             getStyles,
-            configSchema
+            getConfigSchema
         });
 
         const TestBlock = factory(
