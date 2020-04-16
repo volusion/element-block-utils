@@ -2,13 +2,19 @@
     "name": "@volusion/element-block-utils",
     "version": "1.1.0",
     "description": "",
-    "main": "dist/index.js",
-    "module": "dist/index.module.js",
     "scripts": {
         "lint": "eslint .",
         "test": "jest",
-        "build": "rollup -c"
+        "build": "npm run build-utils && npm run build-test-utils",
+        "build-utils": "rollup -c --environment entry:index",
+        "build-test-utils": "rollup -c --environment entry:test-utils"
     },
+    "main": "./index.js",
+    "module": "./index.module.js",
+    "files": [
+        "index.js",
+        "test-utils.js"
+    ],
     "author": "",
     "license": "ISC",
     "devDependencies": {

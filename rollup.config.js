@@ -1,16 +1,15 @@
 import babel from 'rollup-plugin-babel';
-import pkg from './package.json';
 
 export default {
-    input: 'src/index.js',
+    input: `src/${process.env.entry}.js`,
     output: [
         {
-            file: pkg.main,
+            file: `${process.env.entry}.js`,
             name: 'blockUtils',
             format: 'umd'
         },
         {
-            file: pkg.module,
+            file: `${process.env.entry}.module.js`,
             format: 'esm'
         }
     ],
