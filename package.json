@@ -5,7 +5,7 @@
     "scripts": {
         "lint": "eslint .",
         "test": "jest",
-        "build": "npm run build-utils && npm run build-test-utils",
+        "build": "npm run test && npm run build-utils && npm run build-test-utils",
         "build-utils": "rollup -c --environment entry:index",
         "build-test-utils": "rollup -c --environment entry:test-utils"
     },

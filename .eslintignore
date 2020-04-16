@@ -1,1 +1,5 @@
 dist/
+index.js
+index.module.js
+test-utils.js
+test-utils.module.js
