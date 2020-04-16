@@ -48,7 +48,7 @@ class MockClientUtils {
     tenant = 'MOCK_TENANT_ID';
 }
 
-export const utils = {
+export const mockUtils = {
     addAmpScript: jest.fn(),
     addLink: jest.fn(),
     addScipt: jest.fn(),
