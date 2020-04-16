@@ -3,5 +3,8 @@ export const joinClasses = (...classes) => {
         className ? className : ''
     );
     const whitespace = /\s+/g;
-    return validClasses.join(' ').replace(whitespace, ' ').trim();
+    return validClasses
+        .join(' ')
+        .replace(whitespace, ' ')
+        .trim();
 };
