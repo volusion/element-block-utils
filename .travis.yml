@@ -13,3 +13,6 @@ matrix:
         - name: 'Tests'
           script:
               - npm test
+        - name: 'Builds'
+          script:
+              - npm run build
