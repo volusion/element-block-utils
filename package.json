@@ -7,7 +7,8 @@
         "test": "jest",
         "build": "npm run test && npm run build-utils && npm run build-test-utils",
         "build-utils": "rollup -c --environment entry:index",
-        "build-test-utils": "rollup -c --environment entry:test-utils"
+        "build-test-utils": "rollup -c --environment entry:test-utils",
+        "release": "npm run build && np"
     },
     "main": "./index.js",
     "module": "./index.module.js",
@@ -31,6 +32,7 @@
         "eslint-plugin-react": "^7.14.2",
         "jest": "^24.1.0",
         "jest-runner-eslint": "^0.7.3",
+        "np": "^6.2.1",
         "prettier": "^1.16.4",
         "react": "^16.8.6",
         "react-dom": "^16.8.6",
