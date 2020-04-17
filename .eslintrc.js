@@ -19,7 +19,7 @@ module.exports = {
         'no-var': 'error',
         semi: 'error',
         'prefer-const': 'error',
-        'react/prop-types': ['skipUndeclared'],
+        'react/prop-types': [0],
         'prettier/prettier': [
             'error',
             {
