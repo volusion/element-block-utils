@@ -51,7 +51,7 @@ class MockClientUtils {
 export const mockUtils = {
     addAmpScript: jest.fn(),
     addLink: jest.fn(),
-    addScipt: jest.fn(),
+    addScript: jest.fn(),
     canonicalUrl: jest.fn(queryParams => {
         const searchString = stringify(queryParams);
         const { origin, pathname } = window.location;
