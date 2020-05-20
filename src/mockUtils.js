@@ -12,6 +12,15 @@ class MockClientUtils {
     reset() {
         delete this.storeInformation;
     }
+    bag = {
+        create: jest.fn(() => Promise.resolve())
+    };
+    cart = {
+        addContactAndShipping: jest.fn(data => Promise.resolve(data)),
+        create: jest.fn(data => Promise.resolve(data)),
+        get: jest.fn(data => Promise.resolve(data)),
+        placeApplePayOrder: jest.fn(() => Promise.resolve())
+    };
     categories = { get: jest.fn() };
     contentPages = { getBySeoFriendlyName: jest.fn() };
     menus = { get: jest.fn() };
