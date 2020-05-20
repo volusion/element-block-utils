@@ -80,12 +80,21 @@ export const mockUtils = {
     },
     throwNotFound: jest.fn(),
     DEPRECATED_getLegacyButton: () => ({
-        className,
         buttonStyle = 'primary',
-        ...props
-    }) => (
-        <a className={joinClasses(buttonStyle, className)} {...props}>
-            {props.children}
-        </a>
-    )
+        children,
+        className,
+        href,
+        ...rest
+    }) => {
+        const btnClasses = joinClasses(buttonStyle, className);
+        return href ? (
+            <a className={btnClasses} href={href} {...rest}>
+                {children}
+            </a>
+        ) : (
+            <button className={btnClasses} {...rest}>
+                {children}
+            </button>
+        );
+    }
 };
