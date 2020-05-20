@@ -21,19 +21,19 @@ class MockClientUtils {
         get: jest.fn(() => Promise.resolve()),
         placeApplePayOrder: jest.fn(() => Promise.resolve())
     };
-    categories = { get: jest.fn() };
-    contentPages = { getBySeoFriendlyName: jest.fn() };
-    menus = { get: jest.fn() };
+    categories = { get: jest.fn(() => Promise.resolve()) };
+    contentPages = { getBySeoFriendlyName: jest.fn(() => Promise.resolve()) };
+    menus = { get: jest.fn(() => Promise.resolve()) };
     products = {
-        getByCategoryId: jest.fn(),
-        getById: jest.fn(),
-        getBySlug: jest.fn(),
-        getRelatedById: jest.fn(),
-        getRelatedBySlug: jest.fn(),
-        getWithChildCategories: jest.fn(),
-        search: jest.fn()
+        getByCategoryId: jest.fn(() => Promise.resolve()),
+        getById: jest.fn(() => Promise.resolve()),
+        getBySlug: jest.fn(() => Promise.resolve()),
+        getRelatedById: jest.fn(() => Promise.resolve()),
+        getRelatedBySlug: jest.fn(() => Promise.resolve()),
+        getWithChildCategories: jest.fn(() => Promise.resolve()),
+        search: jest.fn(() => Promise.resolve())
     };
-    request = () => jest.fn();
+    request = () => jest.fn(() => Promise.resolve());
     storeInformation = {
         acceptsStripeAsPayment: false,
         launched: false,
