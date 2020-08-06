@@ -21,7 +21,11 @@ class MockClientUtils {
         get: jest.fn(() => Promise.resolve()),
         placeApplePayOrder: jest.fn(() => Promise.resolve())
     };
-    categories = { get: jest.fn(() => Promise.resolve()) };
+    categories = {
+        get: jest.fn(() => Promise.resolve()),
+        getById: jest.fn(() => Promise.resolve()),
+        getBySlug: jest.fn(() => Promise.resolve())
+    };
     contentPages = { getBySeoFriendlyName: jest.fn(() => Promise.resolve()) };
     menus = { get: jest.fn(() => Promise.resolve()) };
     products = {
