@@ -67,6 +67,7 @@ export const mockUtils = {
     addScript: jest.fn(),
     canonicalUrl: jest.fn(queryParams => {
         const searchString = stringify(queryParams);
+        const window = window || { location: {} };
         const { origin, pathname } = window.location;
         const queryString = searchString ? '?' + searchString : '';
         return origin + pathname + queryString;
