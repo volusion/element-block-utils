@@ -21,7 +21,11 @@ class MockClientUtils {
         get: jest.fn(() => Promise.resolve()),
         placeApplePayOrder: jest.fn(() => Promise.resolve())
     };
-    categories = { get: jest.fn(() => Promise.resolve()) };
+    categories = {
+        get: jest.fn(() => Promise.resolve()),
+        getById: jest.fn(() => Promise.resolve()),
+        getBySlug: jest.fn(() => Promise.resolve())
+    };
     contentPages = { getBySeoFriendlyName: jest.fn(() => Promise.resolve()) };
     menus = { get: jest.fn(() => Promise.resolve()) };
     products = {
@@ -61,9 +65,11 @@ export const mockUtils = {
     addAmpScript: jest.fn(),
     addLink: jest.fn(),
     addScript: jest.fn(),
-    canonicalUrl: jest.fn(queryParams => {
+    canonicalUrl: jest.fn((queryParams = {}) => {
         const searchString = stringify(queryParams);
-        const { origin, pathname } = window.location;
+        const globalWindow = global || {};
+        const { location = {} } = globalWindow;
+        const { origin = 'http://localhost', pathname = '/' } = location;
         const queryString = searchString ? '?' + searchString : '';
         return origin + pathname + queryString;
     }),
