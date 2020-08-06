@@ -65,7 +65,7 @@ export const mockUtils = {
     addAmpScript: jest.fn(),
     addLink: jest.fn(),
     addScript: jest.fn(),
-    canonicalUrl: jest.fn(queryParams => {
+    canonicalUrl: jest.fn((queryParams = {}) => {
         const searchString = stringify(queryParams);
         const globalWindow = global || {};
         const { location = {} } = globalWindow;
