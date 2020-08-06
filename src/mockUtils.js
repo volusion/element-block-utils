@@ -69,7 +69,7 @@ export const mockUtils = {
         const searchString = stringify(queryParams);
         const globalWindow = global || {};
         const { location = {} } = globalWindow;
-        const { origin = 'http://localhost:4000', pathname = '/' } = location;
+        const { origin = 'http://localhost', pathname = '/' } = location;
         const queryString = searchString ? '?' + searchString : '';
         return origin + pathname + queryString;
     }),
