@@ -37,7 +37,7 @@ class MockClientUtils {
         getWithChildCategories: jest.fn(() => Promise.resolve()),
         search: jest.fn(() => Promise.resolve())
     };
-    request = () => jest.fn(() => Promise.resolve());
+    request = jest.fn(() => Promise.resolve());
     storeInformation = {
         acceptsStripeAsPayment: false,
         launched: false,
