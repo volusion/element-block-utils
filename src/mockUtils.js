@@ -93,6 +93,7 @@ export const mockUtils = {
         setDescription: jest.fn(),
         addExtraTag: jest.fn()
     },
+    storeUrl: 'http://localhost',
     throwNotFound: jest.fn(),
     DEPRECATED_getLegacyButton: () => ({
         buttonStyle = 'primary',
