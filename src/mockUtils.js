@@ -77,16 +77,31 @@ export const mockUtils = {
     events: {
         cart: {
             addToCart: 'cart.addToCart',
+            askForStripeKey: 'cart.askForStripeKey',
+            askForTotalItems: 'cart.askForTotalItems',
+            askIfLoaded: 'cart.askIfLoaded',
             itemAddedToCart: 'cart.itemAddedToCart',
             itemRemovedFromCart: 'cart.itemRemovedFromCart',
             openAccountPanel: 'cart.openAccountPanel',
             openCart: 'cart.openCart',
+            replyWithLoaded: 'cart.replyWithLoaded',
+            replyWithStripeKey: 'cart.replyWithStripeKey',
+            replyWithTotalItems: 'cart.replyWithTotalItems',
             updateCartCount: 'cart.updateCartCount'
         }
     },
     pubSub: {
+        clearAllSubscriptions: jest.fn(),
+        clearSubscriptions: jest.fn(),
+        countSubscriptions: jest.fn(),
+        getSubscriptions: jest.fn(),
+        immediateExceptions: jest.fn(),
+        publish: jest.fn(),
+        publishSync: jest.fn(),
         subscribe: jest.fn(),
-        publish: jest.fn()
+        subscribeAll: jest.fn(),
+        subscribeOnce: jest.fn(),
+        unsubscribe: jest.fn()
     },
     seo: {
         setTitle: jest.fn(),
