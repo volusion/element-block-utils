@@ -15,9 +15,9 @@ import { css, StyleSheet } from 'aphrodite';
 import { getStyles } from './getStyles';
 
 export const YourBlock = props => {
-    const classes = StyleSheet.create(getStyles(props));
+    const styles = StyleSheet.create(getStyles(props));
     return (
-        <div className={joinClasses('w-100 center', css(classes.wrapper))}>
+        <div className={joinClasses('w-100 center', css(styles.wrapper))}>
             {/* Your content */}
         </div>
     );
