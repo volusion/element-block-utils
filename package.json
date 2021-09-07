@@ -1,14 +1,17 @@
 {
     "name": "@volusion/element-block-utils",
-    "version": "2.0.5",
+    "version": "2.0.6",
     "description": "",
+    "repository": {
+        "type": "npm",
+        "url": "https://www.npmjs.com/package/@volusion/element-block-utils"
+    },
     "scripts": {
         "lint": "eslint .",
         "test": "jest",
         "build": "npm run test && npm run build-utils && npm run build-test-utils",
         "build-utils": "rollup -c --environment entry:index",
-        "build-test-utils": "rollup -c --environment entry:test-utils",
-        "release": "npm run build && np"
+        "build-test-utils": "rollup -c --environment entry:test-utils"
     },
     "main": "./index.js",
     "module": "./index.module.js",
@@ -32,7 +35,6 @@
         "eslint-plugin-react": "^7.20.5",
         "jest": "^24.9.0",
         "jest-runner-eslint": "^0.7.7",
-        "np": "^6.3.2",
         "prettier": "^1.19.1",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
