@@ -1,12 +1,15 @@
 name: Node.js CI
 
 on:
-  release:
-    type: [released]
+  pull_request:
+    branches: [main, master]
+    types: [closed]
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    if: github.event.pull_request.merged == true
 
     steps:
       - name: Checkout code
@@ -25,6 +28,18 @@ jobs:
 
       - name: Run tests
         run: npm run test
+
+      - name: Run build
+        run: npm run build
+
+      - name: Update version
+        run: |
+          git config user.name ${{ secrets.GH_SERVICE_ACCOUNT_NAME }}
+          git config user.email ${{ secrets.GH_SERVICE_ACCOUNT_EMAIL }}
+          npm version minor --no-git-tag-version
+          git add .
+          git commit -m "$(npx -c 'echo $npm_package_version')"
+          git push --tags
 
       - run: npm publish --access public
         env:
