@@ -2,6 +2,7 @@ name: Node.js CI
 
 on:
   pull_request:
+    branches: [main, master]
     types: [closed]
 
 jobs:
@@ -36,10 +37,9 @@ jobs:
           git config user.name ${{ secrets.GH_SERVICE_ACCOUNT_NAME }}
           git config user.email ${{ secrets.GH_SERVICE_ACCOUNT_EMAIL }}
           npm version minor --no-git-tag-version
-          sed -i "s/<version>.*<\/version>/<version>$(npx -c 'echo $npm_package_version')<\/version>/" ./deploy/v1-node-api.nuspec
           git add .
           git commit -m "$(npx -c 'echo $npm_package_version')"
-          git push
+          git push --tags
 
       - run: npm publish --access public
         env:
