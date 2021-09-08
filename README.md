@@ -78,8 +78,7 @@ This util wraps old blocks in a React factory function required by older block c
 
 ## Release process
 
-1. Commit your changes.
-2. Bump the version number on package.json and package-lock.json and commit.
-3. Merge PR.
-4. Tag latest on master and push.
-5. Create to release from newly created tag. This will automatically release to npm.
+1. Bump the version number on package.json and package-lock.json and commit.
+2. Merge PR.
+3. Tag latest on master and push.
+4. Create to release from newly created tag. This will automatically release to npm.
