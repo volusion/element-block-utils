@@ -1,25 +1,40 @@
-name: Node.js CI
+name: NPM Publish
 
 on:
   pull_request:
     branches:
       - main
       - master
-      - develop
+    types:
+      - closed
 
 jobs:
-  build:
-    name: Build & Test
+  publish:
+    name: Publish to npmjs.com
     runs-on: ubuntu-latest
+
+    if: github.event.pull_request.merged == true
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          ref: main
+          token: ${{ secrets.GH_SERVICE_ACCOUNT_TOKEN }}
+
+      - name: Set up gpg signing
+        uses: crazy-max/ghaction-import-gpg@v3
+        with:
+          gpg-private-key: ${{ secrets.GH_SERVICE_ACCOUNT_GPG_KEY }}
+          passphrase: ${{ secrets.GH_SERVICE_ACCOUNT_GPG_PASSPHRASE }}
+          git-user-signingkey: true
+          git-commit-gpgsign: true
 
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
+          registry-url: https://registry.npmjs.org
 
       - name: Install npm packages
         run: npm ci
@@ -53,3 +68,21 @@ jobs:
                 branch: "${{ github.ref }}"
                 event: "${{ github.event_name }}"
                 asset: "{{ steps.variables.outputs.NPM_PACKAGE_NAME }}"
+
+      - name: Update version
+        run: |
+          git config user.name ${{ secrets.GH_SERVICE_ACCOUNT_NAME }}
+          git config user.email ${{ secrets.GH_SERVICE_ACCOUNT_EMAIL }}
+          npm version minor
+
+      - name: Publish NPM package
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          npm publish --access public
+
+      - name: Push version update
+        run: |
+          git add .
+          git commit -m "$(npx -c 'echo $npm_package_version')"
+          git push --tags
