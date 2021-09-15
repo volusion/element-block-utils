@@ -64,7 +64,7 @@ jobs:
         run: |
           git config user.name ${{ secrets.GH_SERVICE_ACCOUNT_NAME }}
           git config user.email ${{ secrets.GH_SERVICE_ACCOUNT_EMAIL }}
-          npm version minor --no-git-tag-version
+          npm version minor
 
       - name: Publish NPM package
         env:
