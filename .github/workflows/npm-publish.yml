@@ -36,6 +36,11 @@ jobs:
           node-version: 12.x
           registry-url: https://registry.npmjs.org
 
+      - id: variables
+        name: Variables
+        run: |
+          echo "::set-output name=NPM_PACKAGE_NAME::$(npx -c 'echo $npm_package_name')"
+
       - name: Install npm packages
         run: npm ci
 
@@ -45,13 +50,14 @@ jobs:
       - name: Run tests
         run: npm run test
 
+      - name: Update version
+        run: |
+          git config user.name ${{ secrets.GH_SERVICE_ACCOUNT_NAME }}
+          git config user.email ${{ secrets.GH_SERVICE_ACCOUNT_EMAIL }}
+          npm version minor
+
       - name: Run build
         run: npm run build
-
-      - id: variables
-        name: Variables
-        run: |
-          echo "::set-output name=NPM_PACKAGE_NAME::$(npx -c 'echo $npm_package_name')"
 
       - name: Increment Build Count
         uses: dynatrace-oss/dynatrace-github-action@v7
@@ -69,12 +75,6 @@ jobs:
                 event: "${{ github.event_name }}"
                 asset: "{{ steps.variables.outputs.NPM_PACKAGE_NAME }}"
 
-      - name: Update version
-        run: |
-          git config user.name ${{ secrets.GH_SERVICE_ACCOUNT_NAME }}
-          git config user.email ${{ secrets.GH_SERVICE_ACCOUNT_EMAIL }}
-          npm version minor
-
       - name: Publish NPM package
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -83,6 +83,4 @@ jobs:
 
       - name: Push version update
         run: |
-          git add .
-          git commit -m "$(npx -c 'echo $npm_package_version')"
           git push --tags
