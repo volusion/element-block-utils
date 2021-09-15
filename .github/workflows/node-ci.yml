@@ -17,6 +17,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          ref: main
+          token: ${{ secrets.GH_SERVICE_ACCOUNT_TOKEN }}
 
       - name: Set up gpg signing
         uses: crazy-max/ghaction-import-gpg@v3
@@ -44,6 +47,11 @@ jobs:
       - name: Run build
         run: npm run build
 
+      - id: variables
+        name: Variables
+        run: |
+          echo "::set-output name=NPM_PACKAGE_NAME::$(npx -c 'echo $npm_package_name')"
+
       - name: Increment Build Count
         uses: dynatrace-oss/dynatrace-github-action@v7
         with:
@@ -58,7 +66,7 @@ jobs:
                 project: "${{ github.repository }}"
                 branch: "${{ github.ref }}"
                 event: "${{ github.event_name }}"
-                asset: "@volusion/element-block-utils"
+                asset: "{{ steps.variables.outputs.NPM_PACKAGE_NAME }}"
 
       - name: Update version
         run: |
