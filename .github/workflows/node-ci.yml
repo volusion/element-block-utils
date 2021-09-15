@@ -2,8 +2,11 @@ name: Node.js CI
 
 on:
   pull_request:
-    branches: [main, master]
-    types: [closed]
+    branches:
+      - main
+      - master
+    types:
+      - closed
 
 jobs:
   build:
@@ -15,10 +18,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Set up gpg signing
+        uses: crazy-max/ghaction-import-gpg@v3
+        with:
+          gpg-private-key: ${{ secrets.GH_SERVICE_ACCOUNT_GPG_KEY }}
+          passphrase: ${{ secrets.GH_SERVICE_ACCOUNT_GPG_PASSPHRASE }}
+          git-user-signingkey: true
+          git-commit-gpgsign: true
+
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
+          registry-url: https://registry.npmjs.org
 
       - name: Install npm packages
         run: npm ci
@@ -32,15 +44,36 @@ jobs:
       - name: Run build
         run: npm run build
 
+      - name: Increment Build Count
+        uses: dynatrace-oss/dynatrace-github-action@v7
+        with:
+          url: '${{ secrets.DT_ENV_URL }}'
+          token: '${{ secrets.DT_API_TOKEN }}'
+          metrics: |
+            - metric: "github.buildcount"
+              displayName: "GitHub Build Count"
+              value: "1.0"
+              dimensions:
+                owner: "${{ github.repository_owner }}"
+                project: "${{ github.repository }}"
+                branch: "${{ github.ref }}"
+                event: "${{ github.event_name }}"
+                asset: "@volusion/element-block-utils"
+
       - name: Update version
         run: |
           git config user.name ${{ secrets.GH_SERVICE_ACCOUNT_NAME }}
           git config user.email ${{ secrets.GH_SERVICE_ACCOUNT_EMAIL }}
           npm version minor --no-git-tag-version
+
+      - name: Publish NPM package
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          npm publish --access public
+
+      - name: Push version update
+        run: |
           git add .
           git commit -m "$(npx -c 'echo $npm_package_version')"
           git push --tags
-
-      - run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
