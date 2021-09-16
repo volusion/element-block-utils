@@ -84,3 +84,4 @@ jobs:
       - name: Push version update
         run: |
           git push
+          git push --tags
