@@ -73,7 +73,7 @@ jobs:
                 project: "${{ github.repository }}"
                 branch: "${{ github.ref }}"
                 event: "${{ github.event_name }}"
-                asset: "{{ steps.variables.outputs.NPM_PACKAGE_NAME }}"
+                asset: "${{ steps.variables.outputs.NPM_PACKAGE_NAME }}"
 
       - name: Publish NPM package
         env:
