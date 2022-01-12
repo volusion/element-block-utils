@@ -117,9 +117,15 @@ export const mockUtils = {
         logo: {
             text: 'Logo',
             publicId: '',
-            url: 'https://res.cloudinary.com/dyx4yhvoq/image/upload/v1579715133/5d0bd834bd7d6e2d83cac6bc/fx3jlhu4lv3ispnumuap.png',
+            url:
+                'https://res.cloudinary.com/dyx4yhvoq/image/upload/v1579715133/5d0bd834bd7d6e2d83cac6bc/fx3jlhu4lv3ispnumuap.png',
         },
-        seo: { defaultDescription: '', defaultOverrideMetaTags: '', defaultTitle: '', globalMetaTags: '' },
+        seo: {
+            defaultDescription: '',
+            defaultOverrideMetaTags: '',
+            defaultTitle: '',
+            globalMetaTags: ''
+        },
     },
     DEPRECATED_getLegacyButton: () => ({
         buttonStyle = 'primary',
