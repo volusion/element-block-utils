@@ -6,25 +6,25 @@ class MockClientUtils {
     setStoreInfo(data = {}) {
         this.storeInformation = {
             ...this.storeInformation,
-            ...data
+            ...data,
         };
     }
     reset() {
         delete this.storeInformation;
     }
     bag = {
-        create: jest.fn(() => Promise.resolve())
+        create: jest.fn(() => Promise.resolve()),
     };
     cart = {
         addContactAndShipping: jest.fn(() => Promise.resolve()),
         create: jest.fn(() => Promise.resolve()),
         get: jest.fn(() => Promise.resolve()),
-        placeApplePayOrder: jest.fn(() => Promise.resolve())
+        placeApplePayOrder: jest.fn(() => Promise.resolve()),
     };
     categories = {
         get: jest.fn(() => Promise.resolve()),
         getById: jest.fn(() => Promise.resolve()),
-        getBySlug: jest.fn(() => Promise.resolve())
+        getBySlug: jest.fn(() => Promise.resolve()),
     };
     contentPages = { getBySeoFriendlyName: jest.fn(() => Promise.resolve()) };
     menus = { get: jest.fn(() => Promise.resolve()) };
@@ -35,7 +35,7 @@ class MockClientUtils {
         getRelatedById: jest.fn(() => Promise.resolve()),
         getRelatedBySlug: jest.fn(() => Promise.resolve()),
         getWithChildCategories: jest.fn(() => Promise.resolve()),
-        search: jest.fn(() => Promise.resolve())
+        search: jest.fn(() => Promise.resolve()),
     };
     request = jest.fn(() => Promise.resolve());
     storeInformation = {
@@ -55,8 +55,8 @@ class MockClientUtils {
         logo: {
             imagePath:
                 'v1579715133/5d0bd834bd7d6e2d83cac6bc/fx3jlhu4lv3ispnumuap.png',
-            uriBase: 'https://res.cloudinary.com/dyx4yhvoq/image/upload/'
-        }
+            uriBase: 'https://res.cloudinary.com/dyx4yhvoq/image/upload/',
+        },
     };
     tenant = 'MOCK_TENANT_ID';
 }
@@ -87,8 +87,8 @@ export const mockUtils = {
             replyWithLoaded: 'cart.replyWithLoaded',
             replyWithStripeKey: 'cart.replyWithStripeKey',
             replyWithTotalItems: 'cart.replyWithTotalItems',
-            updateCartCount: 'cart.updateCartCount'
-        }
+            updateCartCount: 'cart.updateCartCount',
+        },
     },
     pubSub: {
         clearAllSubscriptions: jest.fn(),
@@ -101,12 +101,12 @@ export const mockUtils = {
         subscribe: jest.fn(),
         subscribeAll: jest.fn(),
         subscribeOnce: jest.fn(),
-        unsubscribe: jest.fn()
+        unsubscribe: jest.fn(),
     },
     seo: {
         setTitle: jest.fn(),
         setDescription: jest.fn(),
-        addExtraTag: jest.fn()
+        addExtraTag: jest.fn(),
     },
     storeUrl: 'http://localhost',
     throwNotFound: jest.fn(),
@@ -118,14 +118,14 @@ export const mockUtils = {
             text: 'Logo',
             publicId: '',
             url:
-                'https://res.cloudinary.com/dyx4yhvoq/image/upload/v1579715133/5d0bd834bd7d6e2d83cac6bc/fx3jlhu4lv3ispnumuap.png'
+                'https://res.cloudinary.com/dyx4yhvoq/image/upload/v1579715133/5d0bd834bd7d6e2d83cac6bc/fx3jlhu4lv3ispnumuap.png',
         },
         seo: {
             defaultDescription: '',
             defaultOverrideMetaTags: '',
             defaultTitle: '',
-            globalMetaTags: ''
-        }
+            globalMetaTags: '',
+        },
     },
     DEPRECATED_getLegacyButton: () => ({
         buttonStyle = 'primary',
@@ -144,5 +144,5 @@ export const mockUtils = {
                 {children}
             </button>
         );
-    }
+    },
 };
