@@ -7,7 +7,8 @@ module.exports = {
         },
         {
             displayName: 'test',
-            moduleDirectories: ['node_modules', '<rootDir>/']
+            moduleDirectories: ['node_modules', '<rootDir>/'],
+            testEnvironment: 'jsdom'
         }
     ],
     watchPlugins: ['jest-runner-eslint/watch-fix']
