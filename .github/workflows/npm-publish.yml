@@ -59,22 +59,6 @@ jobs:
       - name: Run build
         run: npm run build
 
-      - name: Increment Build Count
-        uses: dynatrace-oss/dynatrace-github-action@v7
-        with:
-          url: '${{ secrets.DT_ENV_URL }}'
-          token: '${{ secrets.DT_API_TOKEN }}'
-          metrics: |
-            - metric: "github.buildcount"
-              displayName: "GitHub Build Count"
-              value: "1.0"
-              dimensions:
-                owner: "${{ github.repository_owner }}"
-                project: "${{ github.repository }}"
-                branch: "${{ github.ref }}"
-                event: "${{ github.event_name }}"
-                asset: "${{ steps.variables.outputs.NPM_PACKAGE_NAME }}"
-
       - name: Publish NPM package
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
