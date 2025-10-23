@@ -17,7 +17,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           ref: main
           token: ${{ secrets.GH_SERVICE_ACCOUNT_TOKEN }}
@@ -30,10 +30,10 @@ jobs:
           git-user-signingkey: true
           git-commit-gpgsign: true
 
-      - name: Use Node.js 12.x
-        uses: actions/setup-node@v1
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v4
         with:
-          node-version: 12.x
+          node-version: 16.x
           registry-url: https://registry.npmjs.org
 
       - id: variables
@@ -58,22 +58,6 @@ jobs:
 
       - name: Run build
         run: npm run build
-
-      - name: Increment Build Count
-        uses: dynatrace-oss/dynatrace-github-action@v7
-        with:
-          url: '${{ secrets.DT_ENV_URL }}'
-          token: '${{ secrets.DT_API_TOKEN }}'
-          metrics: |
-            - metric: "github.buildcount"
-              displayName: "GitHub Build Count"
-              value: "1.0"
-              dimensions:
-                owner: "${{ github.repository_owner }}"
-                project: "${{ github.repository }}"
-                branch: "${{ github.ref }}"
-                event: "${{ github.event_name }}"
-                asset: "${{ steps.variables.outputs.NPM_PACKAGE_NAME }}"
 
       - name: Publish NPM package
         env:
