@@ -117,8 +117,7 @@ export const mockUtils = {
         logo: {
             text: 'Logo',
             publicId: '',
-            url:
-                'https://res.cloudinary.com/dyx4yhvoq/image/upload/v1579715133/5d0bd834bd7d6e2d83cac6bc/fx3jlhu4lv3ispnumuap.png'
+            url: 'https://res.cloudinary.com/dyx4yhvoq/image/upload/v1579715133/5d0bd834bd7d6e2d83cac6bc/fx3jlhu4lv3ispnumuap.png'
         },
         seo: {
             defaultDescription: '',
@@ -127,22 +126,18 @@ export const mockUtils = {
             globalMetaTags: ''
         }
     },
-    DEPRECATED_getLegacyButton: () => ({
-        buttonStyle = 'primary',
-        children,
-        className,
-        href,
-        ...rest
-    }) => {
-        const btnClasses = joinClasses(buttonStyle, className);
-        return href ? (
-            <a className={btnClasses} href={href} {...rest}>
-                {children}
-            </a>
-        ) : (
-            <button className={btnClasses} {...rest}>
-                {children}
-            </button>
-        );
-    }
+    DEPRECATED_getLegacyButton:
+        () =>
+        ({ buttonStyle = 'primary', children, className, href, ...rest }) => {
+            const btnClasses = joinClasses(buttonStyle, className);
+            return href ? (
+                <a className={btnClasses} href={href} {...rest}>
+                    {children}
+                </a>
+            ) : (
+                <button className={btnClasses} {...rest}>
+                    {children}
+                </button>
+            );
+        }
 };
