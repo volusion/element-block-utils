@@ -1,5 +1,5 @@
 export function createFactory(blockFactory, { getStyles, getConfigSchema }) {
-    return function(
+    return function (
         { React, ElementPropTypes, Components },
         utils,
         { StyleSheet, css },
