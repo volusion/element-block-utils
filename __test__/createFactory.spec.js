@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { StyleSheet, css } from 'aphrodite';
 import { createFactory } from 'src/index.js';
 
@@ -10,17 +10,18 @@ describe('createFactory()', () => {
         const getConfigSchema = () => {};
         const factory = createFactory(blockFactory, {
             getStyles,
-            getConfigSchema
+            getConfigSchema,
         });
 
         const TestBlock = factory(
             { React, Components: {} },
             {},
-            { StyleSheet, css }
+            { StyleSheet, css },
         ).block;
 
         const div = document.createElement('div');
-        ReactDOM.render(<TestBlock />, div);
-        ReactDOM.unmountComponentAtNode(div);
+        const root = createRoot(div);
+        root.render(React.createElement(TestBlock));
+        root.unmount();
     });
 });
