@@ -2,6 +2,9 @@
     "name": "@volusion/element-block-utils",
     "version": "3.0.0",
     "description": "",
+    "engines": {
+        "node": ">=24.2.0"
+    },
     "repository": {
         "type": "npm",
         "url": "https://www.npmjs.com/package/@volusion/element-block-utils"
