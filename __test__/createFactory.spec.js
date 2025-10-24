@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { StyleSheet, css } from 'aphrodite';
 import { createFactory } from 'src/index.js';
 
@@ -20,7 +20,8 @@ describe('createFactory()', () => {
         ).block;
 
         const div = document.createElement('div');
-        ReactDOM.render(<TestBlock />, div);
-        ReactDOM.unmountComponentAtNode(div);
+        const root = createRoot(div);
+        root.render(React.createElement(TestBlock));
+        root.unmount();
     });
 });

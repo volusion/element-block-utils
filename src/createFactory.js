@@ -36,7 +36,7 @@ export function createFactory(blockFactory, { getStyles, getConfigSchema }) {
         };
 
         return {
-            block: React.createFactory(block),
+            block: block,
             config: getConfigSchema(ElementPropTypes)
         };
     };

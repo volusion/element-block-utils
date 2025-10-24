@@ -30,10 +30,10 @@ jobs:
           git-user-signingkey: true
           git-commit-gpgsign: true
 
-      - name: Use Node.js 16.x
+      - name: Use Node.js 24.x
         uses: actions/setup-node@v4
         with:
-          node-version: 16.x
+          node-version: 24.x
           registry-url: https://registry.npmjs.org
 
       - id: variables
