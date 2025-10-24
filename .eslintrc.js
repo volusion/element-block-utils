@@ -3,15 +3,15 @@ module.exports = {
     parserOptions: {
         requireConfigFile: false,
         babelOptions: {
-            presets: ['@babel/preset-env', '@babel/preset-react'],
-        },
+            presets: ['@babel/preset-env', '@babel/preset-react']
+        }
     },
     extends: ['eslint:recommended', 'standard-react', 'prettier'],
     env: {
         browser: true,
         es6: true,
         node: true,
-        jest: true,
+        jest: true
     },
     plugins: ['prettier'],
     rules: {
@@ -28,8 +28,8 @@ module.exports = {
             {
                 tabWidth: 4,
                 singleQuote: true,
-                trailingComma: 'none',
-            },
-        ],
-    },
+                trailingComma: 'none'
+            }
+        ]
+    }
 };

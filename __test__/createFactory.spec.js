@@ -10,13 +10,13 @@ describe('createFactory()', () => {
         const getConfigSchema = () => {};
         const factory = createFactory(blockFactory, {
             getStyles,
-            getConfigSchema,
+            getConfigSchema
         });
 
         const TestBlock = factory(
             { React, Components: {} },
             {},
-            { StyleSheet, css },
+            { StyleSheet, css }
         ).block;
 
         const div = document.createElement('div');

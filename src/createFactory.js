@@ -4,7 +4,7 @@ export function createFactory(blockFactory, { getStyles, getConfigSchema }) {
         utils,
         { StyleSheet, css },
         globalStyles,
-        blockConfig,
+        blockConfig
     ) {
         const classes = StyleSheet.create(getStyles(globalStyles, blockConfig));
 
@@ -13,11 +13,11 @@ export function createFactory(blockFactory, { getStyles, getConfigSchema }) {
                 componentList[name] = Components[name].factory(
                     { React, ElementPropTypes },
                     { StyleSheet, css },
-                    globalStyles,
+                    globalStyles
                 ).component;
                 return componentList;
             },
-            {},
+            {}
         );
 
         const Block = blockFactory(React, generatedComponents);
@@ -29,7 +29,7 @@ export function createFactory(blockFactory, { getStyles, getConfigSchema }) {
                     classes,
                     ...utils,
                     StyleSheet,
-                    css,
+                    css
                 };
                 return <Block {...blockProps} />;
             }
@@ -37,7 +37,7 @@ export function createFactory(blockFactory, { getStyles, getConfigSchema }) {
 
         return {
             block: block,
-            config: getConfigSchema(ElementPropTypes),
+            config: getConfigSchema(ElementPropTypes)
         };
     };
 }
